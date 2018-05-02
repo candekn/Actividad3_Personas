@@ -4,21 +4,21 @@ public class Persona {
 	//Atributos
 	private String nombre;
 	private Integer edad;
-	private Integer dni;
+	private String dni;
 	private Character sexo;
 	private Double peso;
 	private Double altura;
-	public static final Character sexH='H';
-	public static final Character sexM='M';
-	public static final Integer bajo=-1;
-	public static final Integer media=0;
-	public static final Integer alto=1;
+	private static final Character SEXH='H';
+	private static final Character SEXM='M';
+	private static final Integer BAJO=-1;
+	private static final Integer MEDIA=0;
+	private static final Integer ALTO=1;
 	//Metodos
-	public Persona(Integer dni){
+	public Persona(String dni){
 		this.nombre="";
 		this.edad=0;
 		this.dni=dni;
-		this.sexo=sexH;
+		this.sexo=SEXH;
 		this.peso=0.0;
 		this.altura=0.0;
 	}
@@ -28,9 +28,9 @@ public class Persona {
 		this.sexo=sexo;
 		this.peso=(Math.random()*299+1);
 		this.altura=(Math.random()*3+1);
-		this.dni=generaDNI();
+		this.dni=buscarLetra()+generaDNI();
 	}
-	public Persona(String nombre, Integer edad, Integer dni, Character sexo, Double peso, Double altura){
+	public Persona(String nombre, Integer edad, String dni, Character sexo, Double peso, Double altura){
 		this.nombre=nombre;
 		this.edad=edad;
 		this.dni=dni;
@@ -41,14 +41,14 @@ public class Persona {
 	public Integer calcularIMC(){
 		Double imc=(peso)/(Math.pow(this.altura, 2));
 		if (imc<20){
-			return bajo;
+			return BAJO;
 		}
 		else{
 			if(imc>=25){
-				return alto;
+				return ALTO;
 				}
 				else{
-					return media;
+					return MEDIA;
 					}
 			}
 	}
@@ -61,11 +61,11 @@ public class Persona {
 		}
 	}
 	public void comprobarSexo(Character sexo){
-		if((sexo.compareTo(sexH)==0||(sexo.compareTo(sexM))==0)){
+		if((sexo.compareTo(SEXH)==0||(sexo.compareTo(SEXM))==0)){
 			
 		}
 		else{
-			this.sexo=sexH;
+			this.sexo=SEXH;
 		}
 		
 	}
@@ -74,9 +74,64 @@ public class Persona {
 		return "Persona [nombre=" + nombre + ", edad=" + edad + ", dni=" + dni + ", sexo=" + sexo + ", peso=" + peso
 				+ ", altura=" + altura + "]";
 	}
-	public Integer generaDNI(){
+	private Integer generaDNI(){
 		Integer dni=(int)(Math.random()*99999999+1);
 		return dni;
+	}
+	private String buscarLetra() {
+		Integer resto=(Integer)(generaDNI()%23);
+		switch(resto) {
+		case 1: return "A";
+				 
+		case 2: return "B";
+				 
+		case 3: return "C";
+				 
+		case 4: return "D";
+				 
+		case 5: return "E";
+				 
+		case 6: return "F";
+				 
+		case 7: return "G";
+				 
+		case 8: return "H";
+				 
+		case 9: return "I";
+				 
+		case 10:return "J";
+				 
+		case 11: return "k";
+				 
+		case 12: return "L";
+				 
+		case 13: return "M";
+				 
+		case 14: return "N";
+				 
+		case 15: return "O";
+				 
+		case 16: return "P";
+				 
+		case 17: return "Q";
+				 
+		case 18: return "R";
+				 
+		case 19: return "S";
+		 
+		case 20: return "T";
+		 
+		case 21: return "U";
+		 
+		case 22: return "V";
+		 
+		case 23: return "W";
+		 
+		case 24: return "X";
+		 
+		default: return "Y";
+		 
+		}			
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -93,5 +148,31 @@ public class Persona {
 	public void setAltura(Double altura) {
 		this.altura = altura;
 	}
+	public String getNombre() {
+		return nombre;
+	}
+	public Integer getEdad() {
+		return edad;
+	}
+	public Character getSexo() {
+		return sexo;
+	}
+	public Double getPeso() {
+		return peso;
+	}
+	public Double getAltura() {
+		return altura;
+	}
+	
+	public static Integer getBajo() {
+		return BAJO;
+	}
+	public static Integer getMedia() {
+		return MEDIA;
+	}
+	public static Integer getAlto() {
+		return ALTO;
+	}
+	
 	
 }

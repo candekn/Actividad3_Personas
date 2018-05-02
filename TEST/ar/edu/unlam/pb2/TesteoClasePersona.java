@@ -10,21 +10,21 @@ public class TesteoClasePersona {
 
 	@Test
 	public void testPesoIdeal() {
-		Persona persona1 = new Persona("Roberto", 32, 34587422, 'H', 72.0, 1.75);
+		Persona persona1 = new Persona("Roberto", 32, "34587422", 'H', 72.0, 1.75);
 		Integer esperado=0;
 		Integer actual=persona1.calcularIMC();
 		assertEquals(esperado, actual);
 	}
 	@Test
 	public void testSobrepeso(){
-		Persona persona2 = new Persona("Jorge", 42, 27458120, 'H', 144.3, 1.50);
+		Persona persona2 = new Persona("Jorge", 42, "27458120", 'H', 144.3, 1.50);
 		Integer esperado=1;
 		Integer actual=persona2.calcularIMC();
 		assertEquals(esperado, actual);
 	}
 	@Test
 	public void testBajoPeso(){
-		Persona persona3 = new Persona("Marta", 18, 43587222, 'M', 51.1, 1.72);
+		Persona persona3 = new Persona("Marta", 18, "43587222", 'M', 51.1, 1.72);
 		Integer esperado=-1;
 		Integer actual=persona3.calcularIMC();
 		assertEquals(esperado,actual);
